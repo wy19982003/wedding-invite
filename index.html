@@ -1,0 +1,517 @@
+!DOCTYPE html
+html lang=zh-CN
+head
+meta charset=UTF-8
+meta name=viewport content=width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no
+!-- 微信分享OG标签【部署公网后生效！本地打开无效】 --
+meta property=ogtype content=website
+meta property=ogtitle content=💒我们结婚啦  张明 & 李悦的婚礼邀请
+meta property=ogdescription content=2026年10月18日，诚邀您见证我们的幸福时刻
+meta property=ogimage content=httpspicsum.photosid1036800600
+meta property=ogurl content=https你的公网访问链接
+!-- 微信UA兼容 --
+meta name=apple-mobile-web-app-capable content=yes
+meta name=apple-mobile-web-app-status-bar-style content=default
+title张明 & 李悦 · 婚礼邀请函title
+style
+{margin0;padding0;box-sizingborder-box;font-familyNoto Serif SC,serif;}
+body{background#fcfaf6;color#5c4b46;overflow-xhidden;scroll-behaviorsmooth;}
+ 全局动画 
+.fade-in{opacity0;transformtranslateY(30px);transitionall 0.8s ease;}
+.fade-in.active{opacity1;transformtranslateY(0);}
+ 悬浮圆点导航 
+.dot-nav{positionfixed;right16px;top50%;transformtranslateY(-50%);z-index998;displayflex;flex-directioncolumn;gap12px;}
+.dot-nav a{width10px;height10px;border-radius50%;background#d8c8b0;opacity0.5;transition0.3s;displayblock;}
+.dot-nav a.active{opacity1;background#c8a878;transformscale(1.3);}
+ 音乐按钮 
+.music-btn{positionfixed;top16px;right16px;width44px;height44px;border-radius50%;backgroundrgba(255,255,255,0.3);border1px solid #c8a878;displayflex;align-itemscenter;justify-contentcenter;z-index999;color#c8a878;font-size18px;}
+ 封面首屏 
+.section{min-height100vh;padding60px 20px;positionrelative;}
+#cover{displayflex;flex-directioncolumn;align-itemscenter;justify-contentcenter;text-aligncenter;backgroundlinear-gradient(rgba(0,0,0,0.35),rgba(0,0,0,0.35)),url('httpspicsum.photosid103610801920') centercover no-repeat;color#fff;positionrelative;}
+#cover h1{font-size32px;margin-bottom12px;font-weightnormal;}
+#cover .name{font-size26px;margin16px 0;}
+#cover .date-text{font-size16px;opacity0.9;}
+.upload-cover{positionabsolute;top16px;left16px;color#fff;font-size14px;border1px solid #fff;padding6px 10px;border-radius20px;backgroundrgba(0,0,0,0.2);}
+.down-tip{positionabsolute;bottom30px;left50%;transformtranslateX(-50%);animationbounce 2s infinite;}
+@keyframes bounce{0%,100%{transformtranslateX(-50%) translateY(0);}50%{transformtranslateX(-50%) translateY(10px);}}
+ 倒计时 
+.countdown-wrap{displayflex;gap10px;margin-top24px;justify-contentcenter;flex-wrapwrap;}
+.count-item{width70px;height80px;backgroundrgba(200,168,120,0.12);border1px solid #c8a878;border-radius10px;displayflex;flex-directioncolumn;align-itemscenter;justify-contentcenter;}
+.count-num{font-size28px;color#b08858;font-weightbold;}
+.count-label{font-size12px;margin-top4px;}
+ 通用标题 
+.title{text-aligncenter;font-size24px;margin-bottom40px;color#866c56;positionrelative;}
+.titleafter{content;width60px;height1px;background#c8a878;displayblock;margin12px auto;}
+ 爱情故事 时间线 
+.timeline{max-width600px;margin0 auto;}
+.timeline-item{margin36px 0;displayflex;gap16px;align-itemscenter;}
+.timeline-item.left{flex-directionrow;}
+.timeline-item.right{flex-directionrow-reverse;}
+.timeline-card{flex1;padding18px;background#fff;border-radius12px;border1px solid #e8ddce;box-shadow0 4px 12px rgba(200,168,120,0.08);}
+.timeline-dot{width14px;height14px;border-radius50%;background#c8a878;flex-shrink0;positionrelative;}
+.timeline-dotafter{content;width1px;heightcalc(100% + 36px);background#d8c8b0;positionabsolute;top14px;left50%;transformtranslateX(-50%);}
+.timeline-itemlast-child .timeline-dotafter{displaynone;}
+ 婚纱相册 
+.album-wrap{max-width620px;margin0 auto;}
+.album-grid{displaygrid;grid-template-columnsrepeat(3,1fr);gap10px;margin-top20px;}
+.album-item{aspect-ratio1;background#eee;border-radius8px;overflowhidden;cursorpointer;}
+.album-item img{width100%;height100%;object-fitcover;}
+.album-upload{margin16px 0;padding10px;border1px dashed #c8a878;text-aligncenter;border-radius8px;color#866c56;cursorpointer;}
+ 婚礼信息卡片 
+.card-box{max-width600px;margin0 auto;displayflex;flex-directioncolumn;gap16px;}
+.info-card{background#fff;padding20px;border-radius12px;border1px solid #e8ddce;box-shadow0 4px 12px rgba(200,168,120,0.06);}
+.btn-gold{displayblock;width100%;text-aligncenter;margin-top14px;padding10px;border1px solid #c8a878;color#866c56;border-radius30px;backgroundtransparent;text-decorationnone;}
+ 回执表单 
+.form-box{max-width600px;margin0 auto;}
+.form-item{margin-bottom16px;}
+.form-item label{displayblock;margin-bottom6px;}
+.form-item input,.form-item textarea{width100%;padding12px;border1px solid #e0d4c4;border-radius8px;background#fff;outlinenone;font-size16px;}
+.submit-btn{width100%;padding12px;background#c8a878;color#fff;bordernone;border-radius30px;font-size16px;}
+ 祝福墙 
+.bless-wall{max-width600px;margin0 auto;}
+.bless-item{padding14px;background#fff;border-radius10px;margin-bottom12px;border1px solid #eee;}
+ 分享弹窗 
+.share-modal{positionfixed;inset0;backgroundrgba(0,0,0,0.7);z-index2000;displaynone;align-itemscenter;justify-contentcenter;padding20px;}
+.share-content{background#fff;padding30px 20px;border-radius16px;text-aligncenter;max-width320px;}
+.share-content h3{color#866c56;margin-bottom16px;}
+.share-content p{color#666;line-height1.8;font-size15px;}
+.close-share{margin-top20px;padding8px 24px;border1px solid #c8a878;border-radius20px;backgroundtransparent;color#866c56;}
+ 底部分享 
+.share-tip{text-aligncenter;margin-top30px;padding14px;border1px dashed #c8a878;border-radius10px;cursorpointer;}
+.back-top{positionfixed;bottom20px;left50%;transformtranslateX(-50%);padding8px 16px;backgroundrgba(200,168,120,0.8);color#fff;border-radius20px;text-decorationnone;z-index997;}
+ 图片弹窗 
+.lightbox{positionfixed;inset0;backgroundrgba(0,0,0,0.9);z-index1000;displaynone;align-itemscenter;justify-contentcenter;padding20px;}
+.lightbox img{max-width90%;max-height90vh;}
+.lightbox .close{positionabsolute;top20px;right20px;color#fff;font-size28px;}
+ 花瓣 
+.petal{positionfixed;pointer-eventsnone;z-index1;opacity0.8;}
+style
+head
+body
+!-- 分享引导弹窗 --
+div class=share-modal id=shareModal
+    div class=share-content
+        h3分享邀请函h3
+        p点击页面右上角【···】br选择【发送给朋友】或者【分享到朋友圈】p
+        p style=margin-top10px;color#999;朋友圈无法直接分享链接，可复制链接发送朋友圈文案中p
+        button class=close-share id=closeShareBtn我知道了button
+    div
+div
+
+!-- 悬浮导航 --
+div class=dot-nav
+    a href=#cover data-target=cover class=activea
+    a href=#countdown data-target=countdowna
+    a href=#story data-target=storya
+    a href=#album data-target=albuma
+    a href=#info data-target=infoa
+    a href=#flow data-target=flowa
+    a href=#reply data-target=replya
+    a href=#traffic data-target=traffica
+    a href=#bless data-target=blessa
+    a href=#end data-target=enda
+div
+!-- 音乐按钮 --
+div class=music-btn id=musicBtn♫div
+audio id=bgMusic loop src=httpswww.soundhelix.comexamplesmp3SoundHelix-Song-1.mp3
+
+!-- 1 封面首屏 --
+section id=cover class=section fade-in
+    div class=upload-cover id=changeCoverBtn📷更换封面div
+    input type=file id=coverUpload accept=image style=displaynone
+    h1我们结婚啦h1
+    div class=name张明 & 李悦div
+    div class=date-text2026年10月18日 星期日 中午1200div
+    div class=down-tip向下滑动查看详情 ↓div
+section
+
+!-- 2 倒计时 --
+section id=countdown class=section fade-in
+    h2 class=title距离婚礼还有h2
+    div class=countdown-wrap
+        div class=count-item
+            div class=count-num id=day00div
+            div class=count-label天div
+        div
+        div class=count-item
+            div class=count-num id=hour00div
+            div class=count-label时div
+        div
+        div class=count-item
+            div class=count-num id=min00div
+            div class=count-label分div
+        div
+        div class=count-item
+            div class=count-num id=sec00div
+            div class=count-label秒div
+        div
+    div
+section
+
+!-- 3 我们的故事 --
+section id=story class=section fade-in
+    h2 class=title我们的故事h2
+    div class=timeline
+        div class=timeline-item left
+            div class=timeline-card
+                h3初次相遇h3
+                p2021 · 春p
+            div
+            div class=timeline-dotdiv
+        div
+        div class=timeline-item right
+            div class=timeline-card
+                h3确定关系h3
+                p2021 · 夏p
+            div
+            div class=timeline-dotdiv
+        div
+        div class=timeline-item left
+            div class=timeline-card
+                h3求婚成功h3
+                p2025 · 冬p
+            div
+            div class=timeline-dotdiv
+        div
+        div class=timeline-item right
+            div class=timeline-card
+                h3步入婚姻h3
+                p2026 · 秋p
+            div
+            div class=timeline-dotdiv
+        div
+    div
+section
+
+!-- 4 婚纱相册 --
+section id=album class=section fade-in
+    h2 class=title甜蜜相册h2
+    div class=album-wrap
+        div class=album-upload id=albumUploadBtn📷点击批量上传照片div
+        input type=file id=albumFileInput multiple accept=image style=displaynone
+        div class=album-grid id=albumGriddiv
+    div
+section
+
+!-- 5 婚礼信息 --
+section id=info class=section fade-in
+    h2 class=title婚礼信息h2
+    div class=card-box
+        div class=info-card
+            h3📍地点h3
+            p北京市朝阳区国贸大酒店三层宴会厅p
+            a class=btn-gold id=navBtn一键导航a
+        div
+        div class=info-card
+            h3⏰时间安排h3
+            p签到：1100br仪式：1200br婚宴：1230p
+        div
+    div
+section
+
+!-- 6 婚礼流程 --
+section id=flow class=section fade-in
+    h2 class=title当日流程h2
+    div class=timeline
+        div class=timeline-item left
+            div class=timeline-card
+                h31100｜宾客签到h3
+            div
+            div class=timeline-dotdiv
+        div
+        div class=timeline-item right
+            div class=timeline-card
+                h31140｜新人候场h3
+            div
+            div class=timeline-dotdiv
+        div
+        div class=timeline-item left
+            div class=timeline-card
+                h31200｜仪式开始h3
+            div
+            div class=timeline-dotdiv
+        div
+        div class=timeline-item right
+            div class=timeline-card
+                h31230｜婚宴开席h3
+            div
+            div class=timeline-dotdiv
+        div
+        div class=timeline-item left
+            div class=timeline-card
+                h31430｜合影留念h3
+            div
+            div class=timeline-dotdiv
+        div
+    div
+section
+
+!--7 出席回执 --
+section id=reply class=section fade-in
+    h2 class=title出席回执h2
+    div class=form-box
+        div class=form-item
+            label您的姓名label
+            input type=text id=guestName placeholder=请输入姓名
+        div
+        div class=form-item
+            label出席人数label
+            input type=number id=guestNum min=1 placeholder=几位到场
+        div
+        div class=form-item
+            label联系电话label
+            input type=tel id=guestPhone placeholder=手机号码
+        div
+        div class=form-item
+            label祝福语label
+            textarea id=guestBless rows=3 placeholder=写下您的祝福textarea
+        div
+        button class=submit-btn id=submitReply提交回执&祝福button
+        p style=text-aligncenter;margin-top16px;color#488b48;displaynone id=replySuccess✅提交成功！您的祝福已上墙p
+    div
+section
+
+!--8 交通指引 --
+section id=traffic class=section fade-in
+    h2 class=title交通指引h2
+    div class=card-box
+        div class=info-card
+            h3🚗自驾h3
+            p国贸大酒店地下停车场，酒店提供停车券p
+        div
+        div class=info-card
+            h3🚇地铁h3
+            p地铁1号线10号线 国贸站下车步行5分钟p
+        div
+        div class=info-card
+            h3🅿️停车h3
+            p酒店B2B3层车库，签到台领取停车凭证p
+        div
+    div
+section
+
+!--9 祝福墙 --
+section id=bless class=section fade-in
+    h2 class=title大家的祝福h2
+    div class=bless-wall id=blessContainer
+    div
+section
+
+!--10结束页 --
+section id=end class=section fade-in
+    h2 class=title期待您的到来h2
+    div style=text-aligncenter;font-size18px;line-height2;
+        p张明 & 李悦 敬邀p
+        p2026年10月18日 中午1200p
+        p北京市朝阳区国贸大酒店三层宴会厅p
+    div
+    div class=share-tip id=openShareBtn
+        p👉点这里查看微信分享方法p
+    div
+    a href=#cover class=back-top回到顶部a
+section
+
+!--大图预览弹窗--
+div class=lightbox id=lightbox
+    span class=close id=lightClose×span
+    img id=lightImg src=
+div
+
+script
+ ==========分享弹窗逻辑==========
+const shareModal = document.getElementById('shareModal');
+document.getElementById('openShareBtn').onclick = ()= shareModal.style.display='flex';
+document.getElementById('closeShareBtn').onclick = ()= shareModal.style.display='none';
+shareModal.onclick = function(e){
+    if(e.target === shareModal) shareModal.style.display='none';
+}
+
+ ========== 本地存储初始化 ==========
+const STORAGE_KEY = wedding_invite_data;
+let localData = JSON.parse(localStorage.getItem(STORAGE_KEY))  {
+    coverBg,
+    albumImgs[],
+    blessList[]
+};
+
+ 加载本地保存的相册图片
+function renderAlbum(){
+    const grid = document.getElementById(albumGrid);
+    grid.innerHTML = ;
+    localData.albumImgs.forEach((src,idx)={
+        const div = document.createElement(div);
+        div.className=album-item;
+        div.innerHTML = `img src=${src} data-index=${idx}`;
+        grid.appendChild(div);
+    })
+}
+renderAlbum();
+
+加载祝福墙
+function renderBless(){
+    const container = document.getElementById(blessContainer);
+    container.innerHTML = ;
+    localData.blessList.forEach(item={
+        const div = document.createElement(div);
+        div.className=bless-item;
+        div.innerHTML = `strong${item.name}strong：${item.text}`;
+        container.appendChild(div);
+    })
+}
+renderBless();
+
+加载封面背景
+if(localData.coverBg){
+    document.getElementById(cover).style.backgroundImage = `linear-gradient(rgba(0,0,0,0.35),rgba(0,0,0,0.35)),url(${localData.coverBg})`;
+}
+
+ ========== 封面上传 ==========
+document.getElementById(changeCoverBtn).onclick = ()=document.getElementById(coverUpload).click();
+document.getElementById(coverUpload).onchange = function(e){
+    const file = e.target.files[0];
+    if(!file)return;
+    const reader = new FileReader();
+    reader.onload = function(ev){
+        localData.coverBg = ev.target.result;
+        saveStorage();
+        document.getElementById(cover).style.backgroundImage = `linear-gradient(rgba(0,0,0,0.35),rgba(0,0,0,0.35)),url(${ev.target.result})`;
+    }
+    reader.readAsDataURL(file);
+}
+
+ ==========相册批量上传 ==========
+document.getElementById(albumUploadBtn).onclick = ()=document.getElementById(albumFileInput).click();
+document.getElementById(albumFileInput).onchange = function(e){
+    const files = Array.from(e.target.files);
+    files.forEach(file={
+        const reader = new FileReader();
+        reader.onload = ev={
+            localData.albumImgs.push(ev.target.result);
+            saveStorage();
+            renderAlbum();
+        }
+        reader.readAsDataURL(file);
+    })
+}
+
+function saveStorage(){
+    localStorage.setItem(STORAGE_KEY,JSON.stringify(localData));
+}
+
+ ========== 图片放大弹窗 ==========
+const lightbox = document.getElementById(lightbox);
+const lightImg = document.getElementById(lightImg);
+document.getElementById(albumGrid).addEventListener(click,e={
+    if(e.target.tagName===IMG){
+        lightImg.src = e.target.src;
+        lightbox.style.display=flex;
+    }
+})
+document.getElementById(lightClose).onclick = ()=lightbox.style.display=none;
+lightbox.onclick = e={if(e.target===lightbox) lightbox.style.display=none;}
+
+ ========== 背景音乐【微信兼容：必须用户点击才能播放】 ==========
+const audio = document.getElementById(bgMusic);
+const musicBtn = document.getElementById(musicBtn);
+let musicPlay = localStorage.getItem(musicPlay)===1;
+musicBtn.onclick = ()={
+    if(audio.paused){
+        audio.play().then(()={
+            musicBtn.textContent=⏸;
+            localStorage.setItem(musicPlay,1);
+        }).catch(err=console.log(音频播放限制));
+    }else{
+        audio.pause();
+        musicBtn.textContent=♫;
+        localStorage.setItem(musicPlay,0);
+    }
+}
+
+ ==========婚礼倒计时==========
+const weddingTime = new Date(2026-10-18 120000).getTime();
+function updateCount(){
+    const now = Date.now();
+    let diff = weddingTime - now;
+    if(diff=0){
+        document.getElementById(day).innerText=00;
+        document.getElementById(hour).innerText=00;
+        document.getElementById(min).innerText=00;
+        document.getElementById(sec).innerText=00;
+        return;
+    }
+    const d = Math.floor(diff(1000606024));
+    const h = Math.floor((diff%(1000606024))(10006060));
+    const m = Math.floor((diff%(10006060))(100060));
+    const s = Math.floor((diff%(100060))1000);
+    document.getElementById(day).innerText=String(d).padStart(2,0);
+    document.getElementById(hour).innerText=String(h).padStart(2,0);
+    document.getElementById(min).innerText=String(m).padStart(2,0);
+    document.getElementById(sec).innerText=String(s).padStart(2,0);
+}
+updateCount();
+setInterval(updateCount,1000);
+
+ ========== 表单提交回执 ==========
+document.getElementById(submitReply).onclick = function(){
+    const name = document.getElementById(guestName).value.trim();
+    const num = document.getElementById(guestNum).value;
+    const phone = document.getElementById(guestPhone).value.trim();
+    const blessText = document.getElementById(guestBless).value.trim();
+    if(!name!num!phone){
+        alert(请完善姓名、人数、电话信息);
+        return;
+    }
+    localData.blessList.push({name,textblessText恭喜新婚！永浴爱河！});
+    saveStorage();
+    renderBless();
+    document.getElementById(replySuccess).style.display=block;
+    清空表单
+    document.getElementById(guestName).value=;
+    document.getElementById(guestNum).value=;
+    document.getElementById(guestPhone).value=;
+    document.getElementById(guestBless).value=;
+}
+
+ ==========一键导航==========
+document.getElementById(navBtn).onclick = function(){
+    const addr = 北京市朝阳区国贸大酒店三层宴会厅;
+    const targetUrl = `httpsuri.amap.comsearchkeyword=${encodeURIComponent(addr)}`;
+    window.location.href = targetUrl;
+}
+
+ ==========滚动渐入动画 + 侧边导航高亮 ==========
+const sections = document.querySelectorAll(.section);
+const dots = document.querySelectorAll(.dot-nav a);
+const observer = new IntersectionObserver((entries)={
+    entries.forEach(entry={
+        if(entry.isIntersecting){
+            entry.target.classList.add(active);
+            const id = entry.target.id;
+            dots.forEach(d={
+                d.classList.toggle(active,d.dataset.target===id);
+            })
+        }
+    })
+},{threshold0.3})
+sections.forEach(s=observer.observe(s));
+
+ ==========花瓣飘落动画==========
+function createPetal(){
+    const petal = document.createElement(div);
+    petal.className=petal;
+    petal.innerHTML=❀;
+    petal.style.left = Math.random()100+vw;
+    petal.style.fontSize = (8+Math.random()12)+px;
+    petal.style.color = #d8c8b0;
+    document.body.appendChild(petal);
+    const dur = 6000+Math.random()4000;
+    petal.animate([
+        {transformtranslateY(-20px) rotate(0deg)},
+        {transform`translateY(100vh) rotate(${Math.random()360}deg)`}
+    ],{durationdur,easinglinear});
+    setTimeout(()=petal.remove(),dur);
+}
+setInterval(createPetal,800);
+script
+body
+html
